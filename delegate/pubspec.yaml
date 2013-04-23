@@ -1,0 +1,8 @@
+name: delegate
+version: 1.0.0
+author: Samuel Hapák
+description: A sample web application
+homepage: https://github.com/hleumas/dart-delegate
+dependencies:
+  unittest: any
+  browser: any
