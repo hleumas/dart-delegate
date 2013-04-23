@@ -6,7 +6,7 @@ library vacuum.delegate;
 import "dart:core";
 
 /**
- * Returns delegated event handler
+ * Returns delegated event handler.
  *
  * Example usage:
  *
@@ -26,4 +26,11 @@ delegate(parent, condition, handler) {
       element = element.parent;
     }
   };
+}
+
+/**
+ * Attaches delegated event handler to [parent].
+ */
+delegateOn(parent, String eventType, condition, handler) {
+  parent.on[eventType].listen(delegate(parent, condition, handler));
 }

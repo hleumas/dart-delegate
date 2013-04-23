@@ -5,11 +5,10 @@ void main() {
 
   query("#sample_text_id").text = "Click me!";
 
-  window.onClick.listen(delegate(
-    window,
+  delegateOn(window, 'click',
     (el) => el.id == 'sample_text_id',
     (ev, el) => reverseText(ev)
-  ));
+  );
 }
 
 void reverseText(MouseEvent event) {
