@@ -24,6 +24,12 @@ delegate(parent, condition, handler) {
         handler(event, element);
       }
       element = element.parent;
+
+      // If [event.stopPropagation()] was called inside [handler], we should
+      // prevent any additional attempts to handle the event.
+      if (!event.bubbles) {
+        break;
+      }
     }
   };
 }

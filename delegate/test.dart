@@ -9,6 +9,10 @@ import 'lib/delegate.dart';
 class MockEvent {
   MockElement target;
   Map properties;
+  bool bubbles = true;
+  void stopPropagation() {
+    this.bubbles = false;
+  }
 }
 
 class MockElement {
@@ -56,7 +60,7 @@ void main() {
 
   });
 
-  test ('Delegate with null parent', () {
+  test('Delegate with null parent', () {
     var calls = [];
     var eventHandler = delegate(
       null,
@@ -65,6 +69,21 @@ void main() {
     );
     eventHandler(event);
     expect(calls, orderedEquals(['event', 2, 'event', 3, 'event', 4, 'event', 5]));
+  });
+
+  test('Stop propagation on delegated event', () {
+    var calls = [];
+    var eventHandler = delegate(
+      e4,
+      (element) => element.properties['name'] > 1,
+      (ev, el) {
+        calls.addAll([ev.properties['name'], el.properties['name']]);
+        ev.stopPropagation();
+      }
+    );
+    eventHandler(event);
+    expect(calls, orderedEquals(['event', 2]));
+
   });
 
 
