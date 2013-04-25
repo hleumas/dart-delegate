@@ -1,7 +1,7 @@
 name: delegate
-version: 1.0.0
-author: Samuel Hapák
-description: A sample web application
+version: 1.0.2
+author: Samuel Hapák <samuel.hapak@vacuumapps.com>
+description: Library providing support for event delegation.
 homepage: https://github.com/hleumas/dart-delegate
 dependencies:
   unittest: any
